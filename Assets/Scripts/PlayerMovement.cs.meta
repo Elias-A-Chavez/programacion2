@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: ee953a6ff0f1c8641a48143bbeb636fa
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - iceAttack: {fileID: 3648661814436983062, guid: da9351fa8e40d004b92fbf511e7d775e, type: 3}
+  - attackPoint: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
