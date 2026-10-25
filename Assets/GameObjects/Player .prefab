@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 9204089461947595669}
   - component: {fileID: 802594810565811204}
   - component: {fileID: 8501865905417633444}
+  - component: {fileID: -6548912172110498189}
   m_Layer: 0
   m_Name: 'Player '
   m_TagString: Player
@@ -242,3 +243,15 @@ MonoBehaviour:
   mana: 10
   manaBar: {fileID: 339929223428324282, guid: f586edd2debeb7449b682177d246f326, type: 3}
   healthBar: {fileID: 9171862989385642714, guid: a6505fbde8dcf0040b1b47028f448339, type: 3}
+--- !u!114 &-6548912172110498189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8333229991671800928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8ac3988700ce0d48abe62e088866d78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
