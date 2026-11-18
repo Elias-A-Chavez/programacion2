@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 5407780948073846044}
   - component: {fileID: 6958350195005842510}
   - component: {fileID: 419434473441094973}
+  - component: {fileID: -6103226606640632739}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -235,7 +236,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
   player: {fileID: 8333229991671800928, guid: 1301df79025285148b3c53729f1abb38, type: 3}
-  stingPoint: {fileID: 346445157851755338}
+  speed: 10
+  attackPoint: {fileID: 346445157851755338}
   anim: {fileID: 680358082171921610}
-  speed: 8
-  beeSting: {fileID: 329094318004404857, guid: d5d2e7a38e6c3fa488d9719e60c4b089, type: 3}
+  attackPower: {fileID: 329094318004404857, guid: d5d2e7a38e6c3fa488d9719e60c4b089, type: 3}
+--- !u!114 &-6103226606640632739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4588571949003764801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b2a6f48fd71bd247825f2ff2498c1f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BeeAttack

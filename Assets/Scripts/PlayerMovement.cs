@@ -3,14 +3,14 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour, IDamageable
 {
-    [SerializeField] int speed;
+    [SerializeField] private int speed;
     [SerializeField] private Animator anim;
-    public float health;
+    [SerializeField] private float health;
     [SerializeField] private GameObject iceAttack;
     [SerializeField] private GameObject attackPoint;
-    public float mana;
+    [SerializeField] private float mana;
     [SerializeField] private Image manaBar;
     [SerializeField] private Image healthBar;
     
@@ -49,7 +49,7 @@ public class PlayerMovement : MonoBehaviour
             if(mana > 0)
             {
                 Instantiate(iceAttack, attackPoint.transform.position, attackPoint.transform.rotation);
-                mana--;
+                mana -= 1f;
                 
             }
             
@@ -58,17 +58,31 @@ public class PlayerMovement : MonoBehaviour
 
         healthBar.fillAmount = health / 30f;
         manaBar.fillAmount = mana / 10f;
-
-
-        
         
     }
-
+    public float Health
+    {
+        get => health;
+        set
+        {
+            health = Mathf.Clamp(value, 0f, 30f);
+        }
+    }
+    public float Mana
+    {
+        get => mana;
+        set
+        {
+            mana = Mathf.Clamp(value, 0f, 10f);
+            
+        }
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("BeeSting"))
         {
-            health--; 
+            
+            
             Destroy(collision.gameObject);
             
 
@@ -82,27 +96,17 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void TakeDamage()
     {
-        if (collision.gameObject.CompareTag("HealthPotion"))
-        {
-            health = 20;
-            Destroy(collision.gameObject);
-        }
-         else if (collision.gameObject.CompareTag("ManaPotion"))
-        {
-            mana = 10;
-            Destroy(collision.gameObject);
-        }
+        health--;
     }
+
+    //void Defeat()
+    
+        //SceneManager.LoadScene("Defeat");
     
 
     
 
-    void Defeat()
-    {
-        SceneManager.LoadScene("Defeat");
-    }
-
-   
+    
 }

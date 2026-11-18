@@ -18,9 +18,19 @@ public class iceAttack : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+       
+
+        IDamageable damageable = collision.gameObject.GetComponent<IDamageable>();
+        if (damageable != null)
+        {
+            damageable.TakeDamage();
+        }
+
+        Enemies enemy = collision.gameObject.GetComponent<Enemies>();
+        if (enemy != null)
         {
             Destroy(gameObject);
         }
     }
 }
+;
