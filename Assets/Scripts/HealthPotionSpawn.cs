@@ -1,52 +1,32 @@
+using NUnit.Framework;
 using UnityEngine;
 
-public class HealthPotionSpawn : MonoBehaviour, IInteractable
+public class HealthPotionSpawn : MonoBehaviour
 {
 
-    [SerializeField] private GameObject playerHealth;
+    [SerializeField] private GameObject healthPotionPrefab;
+    [SerializeField] private PlayerMovement playerMovement;
+    
 
-    [SerializeField] private float currentHealth;
-    [SerializeField] private GameObject healthPotion;
-
-    private PlayerMovement playerMovement;
-    private bool potionSpawned = false;
-
-    public void Interact()
-    {
-        if (playerMovement != null)
-        {
-            playerMovement.Health += 10f;
-            Destroy(gameObject);
-        }
-    }
+    private GameObject currentPotion;
 
     void Start()
     {
-        if (playerHealth != null)
-        {
-            playerMovement = playerHealth.GetComponent<PlayerMovement>();
-        }
         if (playerMovement == null)
         {
             playerMovement = FindFirstObjectByType<PlayerMovement>();
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (playerMovement == null) return;
 
-        currentHealth = playerMovement.Mana;
-
-        if (currentHealth < 15f && !potionSpawned)
+        
+        if (playerMovement.Health < 15f && currentPotion == null)
         {
-            Instantiate(healthPotion, transform.position, transform.rotation);
-            potionSpawned = true;
-        }
-        else if (currentHealth >= 15f)
-        {
-            potionSpawned = false;
+            currentPotion = Instantiate(healthPotionPrefab, transform.position, transform.rotation);
+           
         }
     }
 }

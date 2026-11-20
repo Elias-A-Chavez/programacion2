@@ -9,6 +9,7 @@ TagManager:
   - BeeSting
   - HealthPotion
   - ManaPotion
+  - SpecialAttack
   layers:
   - Default
   - TransparentFX

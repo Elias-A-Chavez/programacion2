@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5426072535644665653}
   m_Layer: 0
   m_Name: Boss
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -152,7 +152,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.009694144, y: -0.025641233}
+  m_Offset: {x: 0.009694144, y: 0.031026319}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -162,7 +162,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.23411033, y: 0.5011798}
+  m_Size: {x: 0.23411033, y: 0.3878447}
   m_EdgeRadius: 0
 --- !u!50 &2990032572818846886
 Rigidbody2D:
@@ -205,11 +205,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   player: {fileID: 8333229991671800928, guid: 1301df79025285148b3c53729f1abb38, type: 3}
   speed: 12
-  stoppingDistance: 2
   attackPoint: {fileID: 3841486214294778406}
   anim: {fileID: 3485969289566241682}
   attackPower: {fileID: 611659424213217978, guid: 4c99642c78d79e04995d5c8db542c8b8, type: 3}
   bossHealth: 10
+  paralyzeDuration: 0
 --- !u!1 &3841486214294778406
 GameObject:
   m_ObjectHideFlags: 0

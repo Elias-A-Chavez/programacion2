@@ -9,15 +9,22 @@ public class PlayerMovement : MonoBehaviour, IDamageable
     [SerializeField] private Animator anim;
     [SerializeField] private float health;
     [SerializeField] private GameObject iceAttack;
+    [SerializeField] private GameObject specialAttack;
     [SerializeField] private GameObject attackPoint;
     [SerializeField] private float mana;
     [SerializeField] private Image manaBar;
     [SerializeField] private Image healthBar;
-    
+    [SerializeField] private float chargeAttack;
+    private IMagic attack;
+    private IMagic iceMagic;
+    private IMagic specialMagic;
+
+
 
     void Start()
     {
-
+        iceMagic = new PlayerAttack();
+        specialMagic = new SpecialAttack();
     }
 
     void Update()
@@ -48,9 +55,26 @@ public class PlayerMovement : MonoBehaviour, IDamageable
         {
             if(mana > 0)
             {
-                Instantiate(iceAttack, attackPoint.transform.position, attackPoint.transform.rotation);
+                attack = iceMagic;
+                attack.Attack(iceAttack, attackPoint);
                 mana -= 1f;
-                
+                chargeAttack += 1f;
+            }
+           
+
+        }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            
+            if (chargeAttack >= 10f)
+            {
+                if (mana >= 5f)
+                {
+                    attack = specialMagic;
+                    attack.Attack(specialAttack, attackPoint);
+                    mana -= 5f;
+                    chargeAttack = 0f;
+                }
             }
             
         }
@@ -77,14 +101,22 @@ public class PlayerMovement : MonoBehaviour, IDamageable
             
         }
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        IInteractable interactable = collision.gameObject.GetComponentInParent<IInteractable>();
+
+        if (interactable != null)
+        {
+            
+            interactable.Interact();
+        }
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("BeeSting"))
         {
-            
-            
+
             Destroy(collision.gameObject);
-            
 
             if (health <= 0)
             {
@@ -94,6 +126,9 @@ public class PlayerMovement : MonoBehaviour, IDamageable
             }
 
         }
+
+      
+
     }
 
     public void TakeDamage()
@@ -101,9 +136,12 @@ public class PlayerMovement : MonoBehaviour, IDamageable
         health--;
     }
 
-    //void Defeat()
+    public void Defeat()
+    {
+        SceneManager.LoadScene("Defeat");
+    }
     
-        //SceneManager.LoadScene("Defeat");
+       
     
 
     

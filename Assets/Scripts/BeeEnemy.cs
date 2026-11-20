@@ -1,57 +1,56 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.Pool;
 
 public class BeeEnemy : Enemies, IDamageable
 {
     [SerializeField] private GameObject attackPoint;
     [SerializeField] private Animator anim;
     [SerializeField] private GameObject attackPower;
-    public static int enemiesKilled = 0;
-    float timer;
+    public ObjectPool<BeeEnemy> pool;
+    private static int enemiesKilled;
+    public static int EnemiesKilled => enemiesKilled;
+    public static void ResetKills() => enemiesKilled = 0;
 
-    protected override void Start()
+    private float timer;
+    private bool isReleased; 
+    private void OnEnable()
     {
-        base.Start();
-
-        if (enemiesKilled >= 5)
-        {
-            enemiesKilled = 0;
-        }
-
-        
+        isReleased = false;
+        timer = 0f;
     }
-
 
     protected override void Update()
     {
-
         base.Update();
 
         timer += Time.deltaTime;
-        if (timer > 2)
+        if (timer > 2f)
         {
             Attack();
-            timer = 0;
-        }
-    }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("IceAttack"))
-        {
-            enemiesKilled++;
-
+            timer = 0f;
         }
     }
 
+    
     private void Attack()
-
     {
         Instantiate(attackPower, attackPoint.transform.position, attackPoint.transform.rotation);
     }
 
     public void TakeDamage()
     {
-        Destroy(gameObject);
+        if (isReleased) return;
+        isReleased = true;
+
+        enemiesKilled++;
+
+        if (pool != null)
+        {
+            pool.Release(this);
+        }
+        else
+        {
+            Destroy(gameObject); 
+        }
     }
 }
-  

@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 346445157851755338}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.7084806, w: 0.70573026}
-  m_LocalPosition: {x: -0.0049999785, y: -0.122, z: 0}
+  m_LocalPosition: {x: -0.039, y: -0.126, z: 0}
   m_LocalScale: {x: 0.0769823, y: 0.0769823, z: 0.0769823}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -43,9 +43,9 @@ GameObject:
   - component: {fileID: 381725149815101204}
   - component: {fileID: 680358082171921610}
   - component: {fileID: 5407780948073846044}
-  - component: {fileID: 6958350195005842510}
   - component: {fileID: 419434473441094973}
   - component: {fileID: -6103226606640632739}
+  - component: {fileID: 9205698010590932661}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -177,7 +177,36 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &6958350195005842510
+--- !u!114 &419434473441094973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4588571949003764801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e42140e44059b340b421a06f7ce397b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
+  player: {fileID: 8333229991671800928, guid: 1301df79025285148b3c53729f1abb38, type: 3}
+  speed: 10
+  attackPoint: {fileID: 346445157851755338}
+  anim: {fileID: 680358082171921610}
+  attackPower: {fileID: 329094318004404857, guid: d5d2e7a38e6c3fa488d9719e60c4b089, type: 3}
+--- !u!114 &-6103226606640632739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4588571949003764801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b2a6f48fd71bd247825f2ff2498c1f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BeeAttack
+--- !u!61 &9205698010590932661
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -211,7 +240,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.013392448, y: 0.05625791}
+  m_Offset: {x: 0.027342213, y: -0.08108699}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -221,34 +250,5 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.23822713, y: 0.45860887}
+  m_Size: {x: 0.12081742, y: 0.477826}
   m_EdgeRadius: 0
---- !u!114 &419434473441094973
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4588571949003764801}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e42140e44059b340b421a06f7ce397b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
-  player: {fileID: 8333229991671800928, guid: 1301df79025285148b3c53729f1abb38, type: 3}
-  speed: 10
-  attackPoint: {fileID: 346445157851755338}
-  anim: {fileID: 680358082171921610}
-  attackPower: {fileID: 329094318004404857, guid: d5d2e7a38e6c3fa488d9719e60c4b089, type: 3}
---- !u!114 &-6103226606640632739
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4588571949003764801}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b2a6f48fd71bd247825f2ff2498c1f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BeeAttack

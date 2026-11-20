@@ -18,9 +18,14 @@ public class EnemyAttack : MonoBehaviour
     {
        
         IDamageable damageable = collision.gameObject.GetComponent<IDamageable>();
-        if (damageable != null)
         {
-            damageable.TakeDamage();
+            if (collision.gameObject.CompareTag("Enemy")) return;
+            if (damageable != null)
+            {
+                damageable.TakeDamage();
+                Destroy(gameObject);
+            }
         }
+       
     }
 }
